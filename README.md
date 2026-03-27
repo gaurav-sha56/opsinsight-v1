@@ -33,6 +33,18 @@ To install OpsInsight globally on your computer so you can use the `ops` command
    ```
    *(This automatically installs all required dependencies like `google-genai`.)*
 
+### 🔧 Troubleshooting Installation (Windows PATH Error)
+If you see a yellow warning during installation that says:
+> *WARNING: The script ops.exe is installed in 'C:\Users\YourName\AppData\Local\Programs\Python\Python3x\Scripts' which is not on PATH.*
+
+This means Windows doesn't know where to find the `ops` command. To fix it:
+1. Press the Windows Key and search for **"Environment Variables"**.
+2. Click **"Edit the system environment variables"**, then click the **"Environment Variables"** button.
+3. Under "User variables", double-click the `Path` variable.
+4. Click **New** and paste the directory path exactly as it appeared in the yellow warning (e.g., `C:\Users\YourName\AppData...`).
+5. Click **OK** to save everything.
+6. **Restart your PC** (or log out and back in) for the changes to take effect!
+
 3. **Configure your API Key:**
    Run the following command anywhere on your computer. It will ask you for your Google Gemini API key and save it securely.
    ```bash
