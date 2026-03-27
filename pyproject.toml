@@ -6,7 +6,8 @@ dependencies = [
 ]
 
 [tool.setuptools]
-py-modules = ["ops", "utils"]
+py-modules = ["ops"]
+packages = ["utils"]
 
 [project.scripts]
 ops = "ops:main"

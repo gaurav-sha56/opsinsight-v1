@@ -96,3 +96,15 @@ def send_to_llm(contents: list[types.Content]):
         time.sleep(1)
         stream_words(text_content)
         print("\n")
+        
+        try:
+            user_reply = input("💬 Your Reply (or press Enter to exit): ").strip()
+        except (KeyboardInterrupt, EOFError):
+            user_reply = ""
+            
+        if user_reply:
+            contents.append(candidate.content)
+            contents.append(types.Content(role="user", parts=[types.Part(text=user_reply)]))
+            return send_to_llm(contents)
+        else:
+            print("Exiting OpsInsight. Happy coding!\n")

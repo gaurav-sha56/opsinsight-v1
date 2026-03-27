@@ -17,6 +17,7 @@ No more confusing compiler commands. No more copying and pasting stack traces in
 - A Google Gemini API Key (you can get one for free from Google AI Studio).
 
 ## 📦 Installation
+> **⚠️ CRITICAL WARNING:** Do NOT install OpsInsight inside a virtual environment (`venv`). It is a global CLI tool designed to be accessible globally across your entire computer. If you install it inside a virtual environment, the `ops` command will vanish when you deactivate it!
 
 To install OpsInsight globally on your computer so you can use the `ops` command anywhere, follow these steps:
 

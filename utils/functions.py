@@ -44,7 +44,9 @@ def get_run_command(file_name: str, file_type: str):
     file_type = file_type.lower()
 
     if file_type == "python":
-        return [sys.executable, file_name]
+        import shutil
+        python_exe = shutil.which("python") or shutil.which("python3") or sys.executable
+        return [python_exe, file_name]
 
     elif file_type == "cpp":
         # compile + run (two-step)
