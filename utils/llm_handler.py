@@ -34,11 +34,21 @@ def send_to_llm(contents: list[types.Content]):
 
     client = genai.Client(api_key=api_key)
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",   
-        config=config,
-        contents=contents,
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",   
+            config=config,
+            contents=contents,
         )
+    except Exception as e:
+        error_msg = str(e)
+        if "429" in error_msg or "RESOURCE_EXHAUSTED" in error_msg:
+            print("\n❌ OpsInsight Error: You have exceeded your free Gemini API quota limit!")
+            print("Please wait a few minutes for the limit to reset, or check your Google AI Studio billing details.")
+            return
+        else:
+            print(f"\n❌ OpsInsight AI Error: {error_msg}")
+            return
 
     candidate = response.candidates[0]
     

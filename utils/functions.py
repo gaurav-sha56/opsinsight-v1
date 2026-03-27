@@ -71,10 +71,13 @@ def get_run_command(file_name: str, file_type: str):
         return ["node", file_name]
 
     elif file_type == "java":
-        class_name = file_name.replace(".java", "")
+        # Extract the directory component and the bare class name
+        import os
+        java_dir = os.path.dirname(file_name) or "."
+        class_name = os.path.splitext(os.path.basename(file_name))[0]
         return {
             "compile": ["javac", file_name],
-            "run": ["java", class_name]
+            "run": ["java", "-cp", java_dir, class_name]
         }
 
     else:
