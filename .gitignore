@@ -1,0 +1,19 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# virtual env
+venv/
+.env/
+.env
+
+
+
+# build
+dist/
+build/
+*.egg-info/
+
+# OS
+.DS_Store
