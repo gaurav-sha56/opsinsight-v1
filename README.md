@@ -45,6 +45,17 @@ This means Windows doesn't know where to find the `ops` command. To fix it:
 5. Click **OK** to save everything.
 6. **Restart your PC** (or log out and back in) for the changes to take effect!
 
+### 🔧 Troubleshooting Installation (Mac / Linux / Git Bash Error)
+If you are on a Mac, Linux, or using **Git Bash** and receive a similar "not on PATH" warning, your shell cannot find the installed command.
+
+To fix this, look at the folder path in the yellow warning (e.g., `/Users/YourName/.local/bin`). 
+Run this command in your terminal, replacing the path with your specific folder:
+```bash
+echo 'export PATH="/Users/YourName/.local/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+*(Note: If you are on a modern Mac using zsh, replace `~/.bashrc` with `~/.zshrc` in the commands above).*
+
 3. **Configure your API Key:**
    Run the following command anywhere on your computer. It will ask you for your Google Gemini API key and save it securely.
    ```bash
