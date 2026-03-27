@@ -26,6 +26,8 @@ def detect_file_type(file_name: str) -> str:
         return 'cpp'
     elif file_name.endswith('.c'):
         return 'c'
+    elif file_name.endswith('.java'):
+        return 'java'
     elif file_name.endswith('.py'):
         return 'python'
     elif file_name.endswith('.txt'):
