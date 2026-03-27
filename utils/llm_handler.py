@@ -57,7 +57,7 @@ def send_to_llm(contents: list[types.Content]):
             print(f"\n💡 OpsInsight: {text_content.strip()}")
 
         time.sleep(1)
-        print(f"⚙ Tool call → {tool_call.name} {tool_call.args}")
+        print(f"⚙ Tool call → {tool_call.name}")
 
         if tool_call.name == "open_file":
             result = open_file(**tool_call.args)
