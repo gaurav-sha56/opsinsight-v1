@@ -1,6 +1,7 @@
 import time
 import subprocess
 import sys
+import os
 from utils.llm_handler import send_to_llm
 
 
@@ -43,21 +44,23 @@ def get_run_command(file_name: str, file_type: str):
     file_type = file_type.lower()
 
     if file_type == "python":
-        return ["python", file_name]
+        return [sys.executable, file_name]
 
     elif file_type == "cpp":
         # compile + run (two-step)
-        exe_name = file_name.replace(".cpp", ".exe")
+        exe_name = file_name.replace(".cpp", ".exe" if os.name == 'nt' else ".out")
+        run_exe = f".\\{exe_name}" if os.name == 'nt' else f"./{exe_name}"
         return {
             "compile": ["g++", file_name, "-o", exe_name],
-            "run": [exe_name]
+            "run": [run_exe]
         }
 
     elif file_type == "c":
-        exe_name = file_name.replace(".c", ".exe")
+        exe_name = file_name.replace(".c", ".exe" if os.name == 'nt' else ".out")
+        run_exe = f".\\{exe_name}" if os.name == 'nt' else f"./{exe_name}"
         return {
             "compile": ["gcc", file_name, "-o", exe_name],
-            "run": [exe_name]
+            "run": [run_exe]
         }
 
     elif file_type == "js":

@@ -22,7 +22,7 @@ To install OpsInsight globally on your computer so you can use the `ops` command
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/opsinsight-v1.git
+   git clone https://github.com/gaurav-sha56/opsinsight-v1.git
    cd opsinsight-v1
    ```
 
