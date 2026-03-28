@@ -52,19 +52,17 @@ def get_run_command(file_name: str, file_type: str):
 
     elif file_type == "cpp":
         # compile + run (two-step)
-        exe_name = file_name.replace(".cpp", ".exe" if os.name == 'nt' else ".out")
-        run_exe = f".\\{exe_name}" if os.name == 'nt' else f"./{exe_name}"
+        exe_name = file_name.replace(".cpp", ".exe")
         return {
             "compile": ["g++", file_name, "-o", exe_name],
-            "run": [run_exe]
+            "run": [exe_name]
         }
 
     elif file_type == "c":
-        exe_name = file_name.replace(".c", ".exe" if os.name == 'nt' else ".out")
-        run_exe = f".\\{exe_name}" if os.name == 'nt' else f"./{exe_name}"
+        exe_name = file_name.replace(".c", ".exe")
         return {
             "compile": ["gcc", file_name, "-o", exe_name],
-            "run": [run_exe]
+            "run": [exe_name]
         }
 
     elif file_type == "js":

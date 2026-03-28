@@ -18,7 +18,8 @@ def stream_words(text):
 
 tools = types.Tool(function_declarations=[
     open_file_declaration,
-    write_file_declaration
+    write_file_declaration,
+    get_file_list_declaration
 ])
 
 config = types.GenerateContentConfig(tools=[tools])
@@ -64,10 +65,9 @@ def send_to_llm(contents: list[types.Content]):
     # if model wants tool
     if tool_call:
         if text_content.strip():
-            print(f"\n💡 OpsInsight: {text_content.strip()}")
+            stream_words(f"\n💡 OpsInsight: {text_content.strip()}")
 
         time.sleep(1)
-        print(f"⚙ Tool call → {tool_call.name}")
 
         if tool_call.name == "open_file":
             result = open_file(**tool_call.args)
@@ -82,6 +82,10 @@ def send_to_llm(contents: list[types.Content]):
             else:
                 result = "User denied the write operation."
                 print(f"[OpsInsight] Write operation cancelled. Notifying the AI...\n")
+
+        elif tool_call.name == "get_file_list":
+            print(f"[OpsInsight] Scanning workspace files...")
+            result = str(get_file_list())
 
         else:
             result = "unknown_tool"
@@ -102,9 +106,8 @@ def send_to_llm(contents: list[types.Content]):
         return send_to_llm(contents)  # recursive call to get next response from model after tool use
 
     else:
-        print("\n💡 OpsInsight Analysis\n")
         time.sleep(1)
-        stream_words(text_content)
+        stream_words(f"💡 OpsInsight: {text_content}")
         print("\n")
         
         try:

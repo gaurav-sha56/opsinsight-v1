@@ -36,3 +36,12 @@ write_file_declaration = {
     "required": ["file_name", "content"]
   }
 }
+
+get_file_list_declaration = {
+  "name": "get_file_list",
+  "description": "Returns a complete list of all files and their relative paths within the current workspace directory. Use this tool to inspect the directory structure if a file is not found, or to see if the user misspelled the filename.",
+  "parameters": {
+    "type": "object",
+    "properties": {}
+  }
+}

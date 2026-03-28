@@ -37,8 +37,8 @@ def main():
         # The output was already printed to the terminal natively
         pass
     else:
-        print(f"\nError detected!. Analyzing with OpsInsight...\n")
-        time.sleep(2)
+        print(f"\nError detected!. Analyzing with OpsInsight...")
+        time.sleep(1)
         analyze_error(program_output["error"])
 
 if __name__ == "__main__":
