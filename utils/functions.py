@@ -38,6 +38,8 @@ def detect_file_type(file_name: str) -> str:
         return 'yaml'
     elif file_name.endswith('.log'):
         return 'log'
+    elif file_name.endswith('.js'):
+        return 'js'
     else:
         return 'text'
     
