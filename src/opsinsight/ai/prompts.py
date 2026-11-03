@@ -1,4 +1,5 @@
 def get_prompt(error_text: str) -> str:
+    """Generates the debugging and code-analysis prompt for the LLM Brain."""
     prompt = f"""
     You are an encouraging, friendly programming tutor for a beginner coder.
 
