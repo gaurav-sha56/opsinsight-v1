@@ -1,17 +1,40 @@
 [project]
 name = "opsinsight"
-version = "0.1.0"
+version = "0.2.0"
+requires-python = ">=3.8"
 dependencies = [
-    "google-genai"
+    "litellm>=1.40.0",
+    "ollama>=0.4.0",
+    "questionary>=2.0.0",
+    "python-dotenv>=1.0.0",
+    "pytest>=7.0.0",
+    "fastuuid",
+    "pydantic-core>=2.50.0",
+    "tiktoken>=0.14.0",
 ]
 
-[tool.setuptools]
-py-modules = ["ops"]
-packages = ["utils"]
+[dependency-groups]
+dev = [
+    "pytest>=7.0.0"
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.0.0"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+python_files = ["test_*.py"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [project.scripts]
-ops = "ops:main"
+ops = "opsinsight.cli.main:main"
 
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
+

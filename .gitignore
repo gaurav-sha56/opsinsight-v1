@@ -2,6 +2,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.pytest_cache/
+
 
 # virtual env
 venv/
@@ -15,5 +17,13 @@ dist/
 build/
 *.egg-info/
 
-# OS
+# OS & Binaries
 .DS_Store
+*.exe
+
+DOCUMENTING.md
+plan.md
+
+# OpsInsight local configurations
+.ops.config
+.opsinsight/
